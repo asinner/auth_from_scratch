@@ -8,6 +8,26 @@
 </head>
 <body>
 
+<!-- Flash -->
+<% flash.each do |type, msg| %>
+	<div>
+		<%= msg %>
+	</div>
+<% end %>
+
+<!-- Current user / sign in -->
+<% if current_user %>
+	<div>
+		You are logged in as <%= current_user.email %> |
+		<%= link_to 'Log out', logout_path('current'), method: :delete %>
+	</div>
+<% else %>
+	<!-- Sign up link -->
+	<%= link_to 'Sign up', signup_path %>
+	<%= link_to 'Sign in', login_path %>
+<% end %>
+
+<!-- Content -->
 <%= yield %>
 
 </body>
